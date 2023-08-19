@@ -33,7 +33,7 @@ export default function Home() {
     <>
       <HomeHeader />
       <main className="flex min-h-screen flex-col   gap-[50px]   bg-[#fff]">
-        <div className="flex flex-wrap justify-between gap-3 md:px-[230px]py-[50px] px-[16px]">
+        <div className="flex flex-wrap justify-between gap-3 md:px-[230px] py-[50px] px-[16px]">
           <HomeCard bgColor="#2B2B2B" />
           <HomeCard bgColor="#D03459" />
           <HomeCard bgColor="#2B2B2B" />
