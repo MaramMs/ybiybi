@@ -42,3 +42,25 @@ body{
   font-weight: 600;
 
 }
+
+:where(.css-dev-only-do-not-override-byeoj0).ant-progress .ant-progress-inner{
+  background-color: rgba(255, 255, 255, 0.13);
+  border-radius: 0px;
+  width: 470px;
+  height: 17px;
+}
+
+:where(.css-dev-only-do-not-override-byeoj0).ant-progress .ant-progress-success-bg, :where(.css-dev-only-do-not-override-byeoj0).ant-progress .ant-progress-bg {
+  background-color: rgba(208, 52, 89, 1);
+  border-radius: 0px;
+  width: 470px;
+  height: 17px !important;
+}
+
+
+  :where(.css-dev-only-do-not-override-byeoj0).ant-progress .ant-progress-text{
+
+  color: #fff;
+  font-weight: 500;
+  font-size: 12px;
+}
