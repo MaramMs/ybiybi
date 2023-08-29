@@ -17,13 +17,13 @@ const NavBar = () => {
   <div className=' md:flex-row flex-col md:flex justify-end items-center grow gap-[50px] hidden '>
   <ul className='md:flex-row flex flex-col gap-[20px] md:gap-[30px] text-[#aaa] font-[500] text-[16px]'>
     <li>
-      <Link href=''>
+      <Link href='/'>
       Home
       </Link>
     </li>
 
     <li>
-      <Link href=''>
+      <Link href='/aboutus'>
       About Us
       </Link>
     </li>
@@ -33,8 +33,8 @@ const NavBar = () => {
       </Link>
     </li>
     <li>
-      <Link href=''>
-      Shope
+      <Link href='/seller'>
+      Shop
       </Link>
     </li>
     <li>

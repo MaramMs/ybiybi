@@ -41,7 +41,7 @@ const HomeHeader = () => {
       <div className="flex-1 relative">
         <img src="/images/hero-img.png" alt="" />
 
-        <div className="flex flex-col gap-[20px] absolute md:bottom-[30%] -bottom-[8%]">
+        <div className="flex flex-col gap-[20px] absolute md:bottom-[16%] -bottom-[8%]">
 <div className="flex items-center gap-[10px]">
 <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M7.57442 1.26312C7.9133 0.434521 9.0867 0.434521 9.42558 1.26312L11.1625 5.50992C11.2726 5.77926 11.4946 5.98726 11.7706 6.07964L16.1676 7.55173C17.0776 7.85641 17.0776 9.14359 16.1676 9.44827L11.7706 10.9204C11.4946 11.0127 11.2726 11.2207 11.1625 11.4901L9.42558 15.7369C9.0867 16.5655 7.9133 16.5655 7.57442 15.7369L5.83754 11.4901C5.72739 11.2207 5.50538 11.0127 5.22943 10.9204L0.832408 9.44827C-0.0776283 9.14359 -0.0776298 7.85641 0.832407 7.55173L5.22943 6.07964C5.50538 5.98726 5.72739 5.77926 5.83754 5.50992L7.57442 1.26312Z" fill="#5FDDD2"/>

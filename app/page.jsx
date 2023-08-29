@@ -1,11 +1,9 @@
 "use client";
 import HomeCard from "@/components/HomeCard";
 import HomeHeader from "@/components/HomeHeader";
-import Image from "next/image";
 import Link from "next/link";
-import { Input, Button, Row, Col, Checkbox, Select } from "antd";
+import { Input, Button, Row, Col, Checkbox, Select, Tabs, Menu } from "antd";
 import ProductCard from "@/components/ProductCard";
-const { Search } = Input;
 import { Pagination} from 'swiper/modules';
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -15,6 +13,40 @@ import 'swiper/css/scrollbar';
 import { useState } from "react";
 
 export default function Home() {
+  const products =[
+    {
+      img:'/images/product2.png'
+    },
+    {
+      img:'/images/product3.png'
+    },
+    {
+      img:'/images/product4.png'
+    },
+    {
+      img:'/images/product5.png'
+    },
+    {
+      img:'/images/product6.png'
+    },
+    {
+      img:'/images/product7.png'
+    },
+    {
+      img:'/images/product8.png'
+    }, {
+      img:'/images/product9.png'
+    }
+  ]
+
+  const labels = ['ANALYSES', 'SELLER & BUYER', 'SEARCH & FILTER'];
+  
+  const [activeKey, setActiveKey] = useState('01');
+
+  const handleClick = e => {
+    setActiveKey(e.key);
+  }
+
   const searchIcon = `
     <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
     <ellipse cx="8.01429" cy="7.98061" rx="7.01429" ry="7.02138" stroke="#AAAAAA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -49,20 +81,53 @@ export default function Home() {
               any niche. Allowing you to find the best influencers for your
               campaigns.
             </p>
+            <div style={{ position: 'relative' }}>
+        <div
+          style={{
+            position: 'absolute',
+            top: 0,
+            bottom: 0,
+            left: 0,
+            width: 4,
+            backgroundColor: '#EFEFEF',
+          }}
+        />
+        <Menu
+          mode='inline'
+          onClick={handleClick}
+          selectedKeys={[activeKey]}
+          style={{ borderRight: 'none' }}
+        >
+          {labels.map((label, i) => {
+            const id = String(i + 1).padStart(2, '0');
+            return (
+              <Menu.Item key={id}>
+                <div style={{ paddingLeft: 16 }}>
+                  {`${id} ${label}`}
+                </div>
+              </Menu.Item>
+            );
+          })}
+        </Menu>
 
-            <div className="flex flex-col gap-[10px]">
-              <span className="text-[#D03459] font-[600] md:text-[14px] text-[10px]">
-                01 SEARCH & FILTER
-              </span>
-              <span className="text-[#000] font-[600] md:text-[14px] text-[10px]">
-                ANALYSES
-              </span>
-              <span className="text-[#000] font-[600] md:text-[14px] text-[10px]">
-                SELLER & BUYER
-              </span>
-            </div>
+        <style jsx>{`
+        .ant-menu-item-selected::before {
+          content: '';
+          display: inline-block;
+          width: 4px;
+          height: calc(100% / ${labels.length});
+          background-color: red;
+          position: absolute;
+          top: calc((100% / ${labels.length}) * (${activeKey} - 1));
+          left: 0;
+        }
+      `}</style>
+      </div>
 
-            <Button className="bg-[#D03459] h-[50px] w-[170px] text-[#fff] font-[700] text-[12px] md:text-[16px]">
+
+
+
+            <Button className="bg-[#D03459] h-[50px] w-[170px] text-[#fff] font-[700] text-[12px] md:text-[16px] rounded-none">
               Explore
             </Button>
           </div>
@@ -139,31 +204,17 @@ export default function Home() {
           </div>
 
           <Row gutter={[16, 16]}>
-            <Col xs={12} sm={12} md={6} lg={6}>
-              <ProductCard />
-            </Col>
+          {
+            products.map((product) =>{
+              return (
+                <Col xs={12} sm={12} md={6} lg={6}>
+                <ProductCard product={product}/>
+              </Col>
+              )
+            })
+          }
 
-            <Col xs={12} sm={12} md={6} lg={6}>
-              <ProductCard />
-            </Col>
-            <Col xs={12} sm={12} md={6} lg={6}>
-              <ProductCard />
-            </Col>
-            <Col xs={12} sm={12} md={6} lg={6}>
-              <ProductCard />
-            </Col>
-            <Col xs={12} sm={12} md={6} lg={6}>
-              <ProductCard />
-            </Col>
-            <Col xs={12} sm={12} md={6} lg={6}>
-              <ProductCard />
-            </Col>
-            <Col xs={12} sm={12} md={6} lg={6}>
-              <ProductCard />
-            </Col>
-            <Col xs={12} sm={12} md={6} lg={6}>
-              <ProductCard />
-            </Col>
+       
           </Row>
         </div>
 
@@ -288,7 +339,7 @@ export default function Home() {
 
           <Row gutter={[16,16]}>
          
-            <Col span={12} md={{span:7}}>
+            <Col span={12} md={{span:6}}>
             <div className="flex flex-col gap-[16px]">
               <div className="flex flex-col gap-[20px] pt-[30px] px-[16px]  h-[242px] border border-[#DDDDDD] bg-[#fff]">
                 <div className="flex items-center gap-[5px]">
@@ -360,10 +411,10 @@ export default function Home() {
     </div>
             </div>
             </Col>
-            <Col span={12} md={{span:17}}>
+            <Col span={12} md={{span:18}}>
             <Row gutter={[16, 16]}>
                 <Col xs={24} sm={12} md={8} lg={8}>
-                  <div className="flex  flex-col p-[16px] justify-center items-center bg-[#fff] gap-[2px] md:gap-[10px] shadow-lg">
+                  <div className="flex  flex-col p-[16px] justify-center items-center bg-[#fff] gap-[2px] md:gap-[10px]  drop-shadow-[10px_20px_41px_rgba(0,0,0,0.07)]">
                     <img src="/images/person-img.png" alt="" />
                     <div className="flex bg-[#D03459] rounded-[13px] h-[20px] w-[50px] items-center justify-center gap-[8px]">
                       <svg
@@ -424,7 +475,7 @@ export default function Home() {
                 </Col>
 
                 <Col xs={24} sm={12} md={8} lg={8}>
-                  <div className="flex  flex-col p-[16px] justify-center items-center bg-[#fff] gap-[2px] md:gap-[10px] shadow-lg">
+                  <div className="flex  flex-col p-[16px] justify-center items-center bg-[#fff] gap-[2px] md:gap-[10px] drop-shadow-[10px_20px_41px_rgba(0,0,0,0.07)]">
                     <img src="/images/person-img.png" alt="" />
                     <div className="flex bg-[#D03459] rounded-[13px] h-[20px] w-[50px] items-center justify-center gap-[8px]">
                       <svg
@@ -484,7 +535,7 @@ export default function Home() {
                   </div>
                 </Col>
                 <Col xs={24} sm={12} md={8} lg={8}>
-                  <div className="flex  flex-col p-[16px] justify-center items-center bg-[#fff] gap-[2px] md:gap-[10px] shadow-lg">
+                  <div className="flex  flex-col p-[16px] justify-center items-center bg-[#fff] gap-[2px] md:gap-[10px] drop-shadow-[10px_20px_41px_rgba(0,0,0,0.07)]">
                     <img src="/images/person-img.png" alt="" />
                     <div className="flex bg-[#D03459] rounded-[13px] h-[20px] w-[50px] items-center justify-center gap-[8px]">
                       <svg
@@ -544,7 +595,7 @@ export default function Home() {
                   </div>
                 </Col>
                 <Col xs={24} sm={12} md={8} lg={8}>
-                  <div className="flex  flex-col p-[16px] justify-center items-center bg-[#fff] gap-[2px] md:gap-[10px] shadow-lg">
+                  <div className="flex  flex-col p-[16px] justify-center items-center bg-[#fff] gap-[2px] md:gap-[10px] drop-shadow-[10px_20px_41px_rgba(0,0,0,0.07)]">
                     <img src="/images/person-img.png" alt="" />
                     <div className="flex bg-[#D03459] rounded-[13px] h-[20px] w-[50px] items-center justify-center gap-[8px]">
                       <svg
@@ -604,7 +655,7 @@ export default function Home() {
                   </div>
                 </Col>
                 <Col xs={24} sm={12} md={8} lg={8}>
-                  <div className="flex  flex-col p-[16px] justify-center items-center bg-[#fff] gap-[2px] md:gap-[10px] shadow-lg">
+                  <div className="flex  flex-col p-[16px] justify-center items-center bg-[#fff] gap-[2px] md:gap-[10px] drop-shadow-[10px_20px_41px_rgba(0,0,0,0.07)]">
                     <img src="/images/person-img.png" alt="" />
                     <div className="flex bg-[#D03459] rounded-[13px] h-[20px] w-[50px] items-center justify-center gap-[8px]">
                       <svg
@@ -664,7 +715,7 @@ export default function Home() {
                   </div>
                 </Col>
                 <Col xs={24} sm={12} md={8} lg={8}>
-                  <div className="flex  flex-col p-[16px] justify-center items-center bg-[#fff] gap-[2px] md:gap-[10px] shadow-lg">
+                  <div className="flex  flex-col p-[16px] justify-center items-center bg-[#fff] gap-[2px] md:gap-[10px] drop-shadow-[10px_20px_41px_rgba(0,0,0,0.07)]">
                     <img src="/images/person-img.png" alt="" />
                     <div className="flex bg-[#D03459] rounded-[13px] h-[20px] w-[50px] items-center justify-center gap-[8px]">
                       <svg
@@ -798,14 +849,14 @@ export default function Home() {
               <div 
               
               className={`flex flex-col gap-[32px] h-[314px] p-[16px] ${
-                activeSlide === 0 ? 'drop-shadow-lg bg-[#fff]' : ''
+                activeSlide === 0 ? 'shadow-xl bg-[#fff]' : ''
               }`}
               >
                 <div className="rounded-full w-[80px] h-[80px]">
                   <img
                     src="/images/person-img.png"
                     alt=""
-                    className="rounded-full border-[2px] border border-[#D03459]"
+                    className="rounded-full border-[2px]  border-[#D03459]"
                   />
                 </div>
 
@@ -978,7 +1029,7 @@ with Cratchits</h2>
 Wow brands with your custom media kit, complate with transparent, accurate data. free foevere
 </p>
 
-<div className="bg-[#fff] flex justify-between items-center rounded-[100px] border-none md:w-[439px] h-[50px] px-[16px]">
+<div className="bg-[#fff] flex justify-between items-center rounded-[100px] border-none md:w-[439px] h-[50px] px-[7px]">
   <Input className='border-none bg-transparent' placeholder='Enter your mail...'/>
 
   <Button className='rounded-[50px] w-[160px] h-[34px] bg-[#D03459] border-none text-[#fff] font-[600] text-[14px]'>
@@ -1027,3 +1078,9 @@ Wow brands with your custom media kit, complate with transparent, accurate data.
     </>
   );
 }
+
+
+
+
+
+

@@ -1,9 +1,14 @@
 import Link from 'next/link'
 import React from 'react'
 
-const ProductCard = () => {
+const ProductCard = ({product}) => {
+
   return (
-    <div className={`bg-[url('/images/product2.png')] h-[350px] relative p-[16px]`}>
+    <div className={`h-[350px] relative p-[16px]`}
+    
+    style={{ backgroundImage: `url(${product.img})` }}
+
+    >
       <div className='absolute bottom-[3%] z-10 flex gap-[10px] justify-between md:w-[240px] '>
         <div className='flex flex-col gap-[10px] pt-[20px]'>
 <h3 className='text-[#fff] font-[700] text-[14px] md:text-[18px]'>Pablo Esocobar</h3>
